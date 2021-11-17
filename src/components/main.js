@@ -5,7 +5,7 @@ import "./main.scss";
 
 function Main() {
   const [mobileNumber, setMobileNumber] = useState("");
-  const [isSend, setIsOtpSend] = useState(false);
+  const [isSend, setIsOtpSend] = useState(true);
 
   const handleOtpGeneration = () => {
     setIsOtpSend(true);
