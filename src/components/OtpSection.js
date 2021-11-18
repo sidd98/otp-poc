@@ -6,20 +6,14 @@ function OtpSection() {
   useEffect(() => {
     if ("OTPCredential" in window) {
       const ac = new AbortController();
-    
-      navigator.credentials
-        .get({
-          otp: { transport: ["sms"] },
-          signal: ac.signal
-        })
-        .then((otp) => {
-          setOneTimePassword(otp);
-          ac.abort();
-        })
-        .catch((err) => {
-          ac.abort();
-          console.log(err);
-        });
+      navigator.credentials.get({
+        otp: { transport:['sms'] },
+        signal: ac.signal
+      }).then(otp => {
+        setOneTimePassword(otp.code);
+      }).catch(err => {
+        console.log(err);
+      });
     }
   },[])
 
@@ -30,7 +24,7 @@ function OtpSection() {
       <input
           type="text"
           id="otp"
-          autocomplete="one-time-code"
+          autoComplete="one-time-code"
           value={oneTimePassword}
           onChange={(event) => setOneTimePassword(event.target.value)}
         ></input>
