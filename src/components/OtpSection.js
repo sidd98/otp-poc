@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function OtpSection() {
   const [oneTimePassword, setOneTimePassword] = useState("");
+  const [newError, setErr] = useState('');
 
   useEffect(() => {
     if ("OTPCredential" in window) {
@@ -12,7 +13,7 @@ function OtpSection() {
       }).then(otp => {
         setOneTimePassword(otp.code);
       }).catch(err => {
-        console.log(err);
+        setErr(err);
       });
     }
   },[])
@@ -30,6 +31,9 @@ function OtpSection() {
         ></input>
         <button>Send OTP</button>
       </span>
+      {
+        <h1>{newError}</h1>
+      }
     </div>
   );
 }
