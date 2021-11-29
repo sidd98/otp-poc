@@ -30,6 +30,7 @@ function OtpSection() {
         <input
           type="text"
           id="otp"
+          inputMode="numeric"
           autoComplete="one-time-code"
           value={oneTimePassword}
           onChange={(event) => setOneTimePassword(event.target.value)}
